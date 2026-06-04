@@ -87,7 +87,7 @@ nav.stuck{
 .h-tag-bar{width:32px;height:1px;background:#00c8f0}
 .h-title{
   font-family:'Syne',sans-serif;
-  font-size:clamp(1.95rem,8vw,9.5rem);
+  font-size:clamp(2.2rem,8.5vw,9.5rem);
   font-weight:800;line-height:.9;
   letter-spacing:-.03em;margin-bottom:32px;
   animation:up .7s .12s ease both;
@@ -377,13 +377,11 @@ footer{background:#07090e;border-top:1px solid rgba(0,200,240,.1);padding:68px 5
   .pillars{grid-template-columns:1fr}
 }
 
-@media(max-width:768px){
-  .h-title{font-size:clamp(1.6rem,7.5vw,2.8rem) !important;line-height:.95 !important;letter-spacing:-.02em !important}
+
   .h-title .t2{-webkit-text-stroke:.7px #00c8f0 !important}
   .hero{padding:100px 20px 60px !important}
 }
-@media(max-width:600px){
-  .h-title{font-size:clamp(1.5rem,7vw,2.4rem) !important;line-height:.95 !important}
+
   .h-stats{grid-template-columns:1fr 1fr}
   .colab-grid{grid-template-columns:1fr}
   .a-cards{grid-template-columns:1fr}
@@ -393,8 +391,45 @@ footer{background:#07090e;border-top:1px solid rgba(0,200,240,.1);padding:68px 5
   .hero{padding:100px 18px 60px !important}
   .h-desc{font-size:.88rem}
 }
-@media(max-width:400px){
-  .h-title{font-size:1.4rem !important}
+
+}
+
+@media(max-width:1050px){
+  nav{padding:18px 24px}
+  nav.stuck{padding:12px 24px}
+  .nav-links,.nav-cta{display:none}
+  .hero{padding:110px 24px 80px}
+  .h-bottom{grid-template-columns:1fr;gap:32px}
+  .h-stats{grid-template-columns:repeat(3,1fr) !important}
+  .scroll-ind{left:24px}
+  .sec,.sec-alt{padding:80px 24px}
+  .about-grid{grid-template-columns:1fr;gap:52px}
+  .a-frame{max-height:380px}
+  .areas-head,.casos-head{flex-direction:column;align-items:flex-start;gap:14px}
+  .area-row{grid-template-columns:56px 1fr;gap:16px;padding:22px 20px}
+  .ar-desc,.ar-arr{display:none}
+  .casos-grid{grid-template-columns:1fr}
+  .caso-feat{grid-row:auto}
+  .caso-feat img,.caso img{min-height:260px}
+  .colab-grid{grid-template-columns:1fr 1fr;gap:3px}
+  .pillars{grid-template-columns:1fr}
+  .contact-wrap{grid-template-columns:1fr}
+  .c-l,.c-r{padding:72px 24px}
+  .ft{grid-template-columns:1fr 1fr;gap:36px;padding-bottom:40px}
+  footer{padding:52px 24px 0}
+  .fb-bot{flex-direction:column;gap:10px;text-align:center;padding:18px 0}
+}
+@media(max-width:600px){
+  .h-title{font-size:clamp(2rem,8.5vw,3rem) !important;line-height:.95 !important;overflow:visible !important}
+  .h-stats{grid-template-columns:repeat(3,1fr) !important}
+  .hs{padding-left:10px}
+  .hs-n{font-size:1.5rem}
+  .colab-grid{grid-template-columns:1fr}
+  .a-cards{grid-template-columns:1fr}
+  .ft{grid-template-columns:1fr}
+  .fg-row{grid-template-columns:1fr}
+  .h-desc{font-size:.88rem}
+  .hero{padding:100px 18px 70px}
 }
 </style>
 </head>
