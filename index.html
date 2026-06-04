@@ -369,13 +369,32 @@ footer{background:#07090e;border-top:1px solid rgba(0,200,240,.1);padding:68px 5
   .fb-bot{flex-direction:column;gap:10px;text-align:center;padding:18px 0}
 }
 @media(max-width:580px){
-  .h-title{font-size:3.2rem}
   .h-stats{grid-template-columns:1fr 1fr}
   .colab-grid{grid-template-columns:1fr}
   .a-cards{grid-template-columns:1fr}
   .ft{grid-template-columns:1fr}
   .fg-row{grid-template-columns:1fr}
   .pillars{grid-template-columns:1fr}
+}
+
+@media(max-width:768px){
+  .h-title{font-size:clamp(1.6rem,7.5vw,2.8rem) !important;line-height:.95 !important;letter-spacing:-.02em !important}
+  .h-title .t2{-webkit-text-stroke:.7px #00c8f0 !important}
+  .hero{padding:100px 20px 60px !important}
+}
+@media(max-width:600px){
+  .h-title{font-size:clamp(1.5rem,7vw,2.4rem) !important;line-height:.95 !important}
+  .h-stats{grid-template-columns:1fr 1fr}
+  .colab-grid{grid-template-columns:1fr}
+  .a-cards{grid-template-columns:1fr}
+  .ft{grid-template-columns:1fr}
+  .fg-row{grid-template-columns:1fr}
+  .pillars{grid-template-columns:1fr}
+  .hero{padding:100px 18px 60px !important}
+  .h-desc{font-size:.88rem}
+}
+@media(max-width:400px){
+  .h-title{font-size:1.4rem !important}
 }
 </style>
 </head>
