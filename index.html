@@ -2,705 +2,214 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alexis Socías — Abogado Penalista</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  background-color:#07090e;
-  color:#e8edf8;
-  font-family:'Space Grotesk',sans-serif;
-  overflow-x:hidden;
-  cursor:none;
-}
-
-/* CURSOR – solo desktop */
-#cur,#cur-ring{display:none}
-@media(pointer:fine){
-  #cur{display:block;position:fixed;width:8px;height:8px;background:#00c8f0;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s,height .3s,background .3s}
-  #cur-ring{display:block;position:fixed;width:32px;height:32px;border:1px solid #00c8f0;border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .4s,height .4s,opacity .4s;opacity:.5}
-  #cur.big{width:16px;height:16px;background:#ff3b6b}
-  #cur-ring.big{width:56px;height:56px;opacity:.2}
-  body{cursor:none}
-}
-
-/* ── NAV ── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:500;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:22px 56px;
-  transition:all .4s;
-}
-nav.stuck{
-  padding:14px 56px;
-  background:#07090e;
-  border-bottom:1px solid rgba(0,200,240,.12);
-}
-.nav-logo{
-  font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;
-  letter-spacing:.12em;text-transform:uppercase;
-  color:#e8edf8;text-decoration:none;
-  display:flex;align-items:center;gap:9px;
-}
-.ndot{width:8px;height:8px;background:#00c8f0;border-radius:50%;animation:blink 2s infinite}
-@keyframes blink{0%,100%{box-shadow:0 0 0 0 rgba(0,200,240,.5)}60%{box-shadow:0 0 0 7px rgba(0,200,240,0)}}
-.nav-links{display:flex;gap:32px;list-style:none}
-.nav-links a{font-size:.73rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#556070;text-decoration:none;transition:color .3s}
-.nav-links a:hover{color:#00c8f0}
-.nav-cta{
-  font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;
-  color:#07090e;background:#00c8f0;border:none;
-  padding:9px 20px;cursor:pointer;text-decoration:none;
-  display:inline-block;transition:background .3s;
-  clip-path:polygon(7px 0%,100% 0%,calc(100% - 7px) 100%,0% 100%);
-}
-.nav-cta:hover{background:#fff}
-
-/* ── HERO ── */
-.hero{
-  min-height:100vh;
-  background-color:#07090e;
-  display:flex;flex-direction:column;justify-content:center;
-  padding:130px 56px 90px;
-  position:relative;overflow:hidden;
-}
-/* grid lines */
-.hero:before{
-  content:'';position:absolute;inset:0;
-  background-image:linear-gradient(rgba(0,200,240,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,200,240,.05) 1px,transparent 1px);
-  background-size:52px 52px;
-  -webkit-mask-image:radial-gradient(ellipse 75% 75% at 55% 45%,black 35%,transparent 100%);
-  mask-image:radial-gradient(ellipse 75% 75% at 55% 45%,black 35%,transparent 100%);
-  pointer-events:none;
-}
-.hero-glow1{position:absolute;top:-15%;right:-5%;width:600px;height:600px;background:radial-gradient(circle,rgba(0,200,240,.1) 0%,transparent 65%);pointer-events:none}
-.hero-glow2{position:absolute;bottom:-20%;left:-5%;width:500px;height:500px;background:radial-gradient(circle,rgba(255,59,107,.07) 0%,transparent 65%);pointer-events:none}
-.h-tag{
-  font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.2em;color:#00c8f0;
-  text-transform:uppercase;margin-bottom:26px;
-  display:flex;align-items:center;gap:12px;
-  animation:up .7s ease both;
-}
-.h-tag-bar{width:32px;height:1px;background:#00c8f0}
-.h-title{
-  font-family:'Syne',sans-serif;
-  font-size:clamp(2.2rem,8.5vw,9.5rem);
-  font-weight:800;line-height:.9;
-  letter-spacing:-.03em;margin-bottom:32px;
-  animation:up .7s .12s ease both;
-}
-.h-title .t1{display:block;color:#e8edf8}
-.h-title .t2{
-  display:block;
-  -webkit-text-stroke:1.5px #00c8f0;
-  color:transparent;
-}
-.h-title .t3{display:block;color:#e8edf8;font-style:italic}
-.h-bottom{
-  display:grid;grid-template-columns:1fr 1fr;gap:60px;
-  margin-top:56px;align-items:end;
-  animation:up .7s .25s ease both;
-}
-.h-desc{
-  font-size:1rem;font-weight:300;
-  color:rgba(232,237,248,.5);line-height:1.85;
-  border-left:2px solid #00c8f0;padding-left:22px;
-}
-.h-right{display:flex;flex-direction:column;gap:18px}
-.h-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:28px}
-.hs{
-  background:#0d1220;
-  border:1px solid rgba(0,200,240,.15);
-  padding:22px 18px;position:relative;
-}
-.hs::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#00c8f0,#7c3aed)}
-.hs-n{font-family:'Syne',sans-serif;font-size:2.1rem;font-weight:700;color:#00c8f0;line-height:1;margin-bottom:5px}
-.hs-l{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:#556070}
-.h-btns{display:flex;gap:12px;flex-wrap:wrap}
-.btn-a{
-  font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
-  color:#07090e;background:#00c8f0;
-  padding:13px 28px;text-decoration:none;display:inline-block;
-  clip-path:polygon(9px 0%,100% 0%,calc(100% - 9px) 100%,0% 100%);
-  transition:background .3s;
-}
-.btn-a:hover{background:#fff}
-.btn-b{
-  font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
-  color:#00c8f0;border:1px solid rgba(0,200,240,.3);
-  padding:13px 28px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;
-  clip-path:polygon(9px 0%,100% 0%,calc(100% - 9px) 100%,0% 100%);
-  transition:all .3s;
-}
-.btn-b:hover{border-color:#00c8f0;background:rgba(0,200,240,.07)}
-.btn-b::after{content:'↗';transition:transform .3s}
-.btn-b:hover::after{transform:translate(2px,-2px)}
-.scroll-ind{
-  position:absolute;bottom:36px;left:56px;
-  display:flex;align-items:center;gap:14px;opacity:.35;
-}
-.scroll-bar{width:48px;height:1px;background:#00c8f0;animation:widen 2s ease-in-out infinite alternate}
-@keyframes widen{from{width:20px}to{width:55px}}
-.scroll-ind span{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:#00c8f0}
-
-/* ── TICKER ── */
-.ticker{background:#0d1220;border-top:1px solid rgba(0,200,240,.15);border-bottom:1px solid rgba(0,200,240,.15);overflow:hidden;padding:13px 0}
-.ticker-t{display:flex;width:max-content;animation:tick 28s linear infinite}
-@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.ti{font-family:'DM Mono',monospace;font-size:.63rem;letter-spacing:.22em;text-transform:uppercase;color:#556070;padding:0 38px;white-space:nowrap;display:flex;align-items:center;gap:38px}
-.ti::after{content:'//';color:#00c8f0;font-size:.65rem}
-
-/* ── SECTIONS ── */
-.sec{padding:110px 56px;background-color:#07090e}
-.sec-alt{padding:110px 56px;background-color:#0a0d14}
-.s-tag{font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:#00c8f0;margin-bottom:14px;display:flex;align-items:center;gap:10px}
-.s-tag::before{content:'';width:22px;height:1px;background:#00c8f0}
-.s-num{color:#556070}
-.s-h{font-family:'Syne',sans-serif;font-size:clamp(2rem,3.8vw,3.6rem);font-weight:700;line-height:1.05;letter-spacing:-.02em}
-.s-h em{font-style:italic;color:#00c8f0}
-.s-h .red{color:#ff3b6b}
-
-/* ── ABOUT ── */
-.about-grid{display:grid;grid-template-columns:5fr 4fr;gap:90px;align-items:center;margin-top:72px}
-.a-frame{position:relative;aspect-ratio:3/4;background:#0d1220;border:1px solid rgba(0,200,240,.15);overflow:hidden}
-.a-frame img{width:100%;height:100%;object-fit:cover;filter:saturate(.65) contrast(1.15);transition:filter .5s,transform .6s}
-.a-frame:hover img{filter:saturate(.9) contrast(1.1);transform:scale(1.04)}
-.a-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,200,240,.07),transparent 50%,rgba(255,59,107,.05));pointer-events:none}
-.a-corner{position:absolute;top:-14px;left:-14px;width:50px;height:50px;border-top:2px solid #00c8f0;border-left:2px solid #00c8f0}
-.a-badge{
-  position:absolute;bottom:-18px;right:-18px;
-  background:#00c8f0;color:#07090e;
-  width:100px;height:100px;border-radius:50%;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  font-family:'Syne',sans-serif;font-weight:700;
-  border:4px solid #07090e;
-}
-.a-badge-n{font-size:1.8rem;line-height:1}
-.a-badge-l{font-family:'DM Mono',monospace;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase}
-.a-text{display:flex;flex-direction:column;gap:20px}
-.a-text p{font-size:.95rem;font-weight:300;color:rgba(232,237,248,.6);line-height:1.9}
-.a-text p strong{color:#e8edf8;font-weight:500}
-.a-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
-.chip{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(0,200,240,.2);color:#00c8f0;padding:6px 13px;transition:all .3s}
-.chip:hover{background:rgba(0,200,240,.08);border-color:#00c8f0}
-.a-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px}
-.ac{background:#0d1220;border:1px solid rgba(0,200,240,.12);padding:18px;position:relative;overflow:hidden;transition:border-color .3s}
-.ac::after{content:'';position:absolute;top:0;left:0;width:2px;height:0;background:#00c8f0;transition:height .4s}
-.ac:hover::after{height:100%}
-.ac:hover{border-color:rgba(0,200,240,.35)}
-.ac-t{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:600;margin-bottom:3px;color:#e8edf8}
-.ac-s{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:#556070}
-
-/* ── AREAS ── */
-.areas-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:64px}
-.area-list{display:grid;gap:2px}
-.area-row{
-  display:grid;grid-template-columns:70px 1fr auto auto;align-items:center;
-  gap:32px;padding:28px 36px;
-  background:#0d1220;border:1px solid transparent;
-  cursor:pointer;transition:all .4s;position:relative;overflow:hidden;
-}
-.area-row::before{content:'';position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,rgba(0,200,240,.07),transparent);transition:width .5s cubic-bezier(.16,1,.3,1)}
-.area-row:hover{border-color:rgba(0,200,240,.25);transform:translateX(5px)}
-.area-row:hover::before{width:100%}
-.ar-n{font-family:'Syne',sans-serif;font-size:2.6rem;font-weight:700;color:rgba(0,200,240,.12);transition:color .4s}
-.area-row:hover .ar-n{color:rgba(0,200,240,.28)}
-.ar-name{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:600;color:#e8edf8}
-.ar-desc{font-size:.83rem;color:#556070;line-height:1.55;max-width:350px}
-.ar-arr{font-size:1.1rem;color:#00c8f0;opacity:0;transform:translateX(-6px);transition:all .4s}
-.area-row:hover .ar-arr{opacity:1;transform:translateX(0)}
-
-/* ── CASOS ── */
-.casos-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:64px}
-.casos-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto;gap:3px}
-.caso{position:relative;overflow:hidden;background:#0d1220}
-.caso-feat{grid-row:1/3}
-.caso img{display:block;width:100%;height:100%;min-height:260px;object-fit:cover;filter:grayscale(50%) contrast(1.1) brightness(.75);transition:all .8s cubic-bezier(.16,1,.3,1)}
-.caso-feat img{min-height:520px}
-.caso:hover img{filter:grayscale(10%) contrast(1.05) brightness(.8);transform:scale(1.06)}
-.caso-body{
-  position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;
-  padding:28px 24px;
-  background:linear-gradient(to top,rgba(7,9,14,.96) 0%,rgba(7,9,14,.55) 50%,transparent 100%);
-}
-.caso-tag{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:#00c8f0;margin-bottom:8px;display:flex;align-items:center;gap:7px}
-.caso-tag::before{content:'';width:14px;height:1px;background:#00c8f0}
-.caso-title{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:600;line-height:1.25;margin-bottom:8px;color:#e8edf8}
-.caso-feat .caso-title{font-size:1.5rem}
-.caso-txt{font-size:.8rem;color:rgba(232,237,248,.5);line-height:1.65;max-height:0;overflow:hidden;transition:max-height .55s cubic-bezier(.16,1,.3,1)}
-.caso:hover .caso-txt{max-height:90px}
-.caso-lnk{display:inline-flex;align-items:center;gap:7px;margin-top:12px;font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:#00c8f0;text-decoration:none;opacity:0;transform:translateY(5px);transition:all .4s .08s}
-.caso:hover .caso-lnk{opacity:1;transform:translateY(0)}
-.caso-lnk::after{content:'↗'}
-
-/* ── COLABORADORES ── */
-.colab-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-top:64px}
-.col-card{
-  background:#0d1220;border:1px solid transparent;
-  padding:36px 28px;position:relative;overflow:hidden;
-  cursor:pointer;transition:all .4s;
-}
-.col-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#00c8f0,#7c3aed);transform:scaleX(0);transition:transform .4s}
-.col-card:hover{border-color:rgba(0,200,240,.25);transform:translateY(-5px);background:#101828}
-.col-card:hover::before{transform:scaleX(1)}
-.col-init{
-  width:58px;height:58px;border-radius:50%;background:#131d2e;
-  border:2px solid rgba(0,200,240,.2);
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:700;color:#00c8f0;
-  margin-bottom:20px;transition:border-color .4s;
-}
-.col-card:hover .col-init{border-color:#00c8f0}
-.col-name{font-family:'Syne',sans-serif;font-size:1rem;font-weight:600;margin-bottom:4px;color:#e8edf8}
-.col-role{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:#00c8f0;margin-bottom:14px}
-.col-desc{font-size:.81rem;color:#556070;line-height:1.7;margin-bottom:14px}
-.col-tags{display:flex;flex-wrap:wrap;gap:5px}
-.ctag{font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(0,200,240,.15);color:#556070;padding:3px 9px;transition:all .3s}
-.col-card:hover .ctag{border-color:rgba(0,200,240,.3);color:#00c8f0}
-
-/* ── VISION ── */
-.vision-inner{max-width:860px;margin:0 auto;text-align:center;position:relative;z-index:1}
-.v-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:500px;background:radial-gradient(ellipse,rgba(124,58,237,.09) 0%,transparent 65%);pointer-events:none}
-.v-q{font-family:'Syne',sans-serif;font-size:clamp(1.7rem,3.2vw,2.9rem);font-weight:700;line-height:1.25;letter-spacing:-.01em;margin:36px 0}
-.v-q em{font-style:italic;color:#00c8f0}
-.v-q .red{color:#ff3b6b}
-.v-sub{font-size:.93rem;color:rgba(232,237,248,.45);line-height:1.9;max-width:580px;margin:0 auto}
-.v-divider{display:flex;align-items:center;gap:18px;justify-content:center;margin:0 0 18px}
-.v-bar{flex:1;max-width:100px;height:1px;background:rgba(0,200,240,.18)}
-.v-label{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:#556070}
-.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:64px}
-.pillar{background:#0d1220;border:1px solid rgba(0,200,240,.12);padding:36px 28px;text-align:left;transition:transform .4s,border-color .4s;position:relative;overflow:hidden}
-.pillar::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,#00c8f0,#7c3aed);opacity:0;transition:opacity .4s}
-.pillar:hover{transform:translateY(-4px);border-color:rgba(0,200,240,.3)}
-.pillar:hover::before{opacity:1}
-.p-ico{font-size:1.8rem;margin-bottom:18px;display:block}
-.p-t{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:600;margin-bottom:10px;color:#e8edf8}
-.p-d{font-size:.83rem;color:#556070;line-height:1.7}
-
-/* ── CONTACT ── */
-.contact-wrap{display:grid;grid-template-columns:1fr 1fr;min-height:88vh}
-.c-l{padding:100px 72px;background:#0a0d14;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
-.c-glow{position:absolute;top:30%;left:20%;width:380px;height:380px;background:radial-gradient(circle,rgba(0,200,240,.07),transparent 65%);pointer-events:none}
-.c-r{padding:100px 72px;background:#07090e;display:flex;flex-direction:column;justify-content:center}
-.c-title{font-family:'Syne',sans-serif;font-size:clamp(2rem,3.2vw,3.2rem);font-weight:700;line-height:1.05;letter-spacing:-.02em;margin:18px 0 36px}
-.c-title em{font-style:italic;color:#00c8f0}
-.c-items{display:flex;flex-direction:column;gap:26px}
-.c-item{display:flex;align-items:flex-start;gap:16px}
-.c-ico{width:42px;height:42px;background:#0d1220;border:1px solid rgba(0,200,240,.18);display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%)}
-.c-lbl{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:#556070;margin-bottom:4px}
-.c-val{font-size:.92rem;color:#e8edf8}
-.urg{background:rgba(255,59,107,.07);border:1px solid rgba(255,59,107,.2);padding:16px 20px;margin-top:28px;display:flex;align-items:center;gap:12px;font-size:.8rem;color:rgba(232,237,248,.65)}
-.urg-dot{width:7px;height:7px;background:#ff3b6b;border-radius:50%;animation:blink 1.5s infinite;flex-shrink:0}
-.fg{margin-bottom:22px}
-.fg label{display:block;font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:#556070;margin-bottom:9px}
-.fg input,.fg textarea,.fg select{
-  width:100%;background:#0a0d14;border:none;border-bottom:1px solid rgba(232,237,248,.14);
-  padding:11px 0;color:#e8edf8;font-family:'Space Grotesk',sans-serif;font-size:.93rem;
-  outline:none;transition:border-color .3s;
-}
-.fg input::placeholder,.fg textarea::placeholder{color:rgba(232,237,248,.2)}
-.fg input:focus,.fg textarea:focus,.fg select:focus{border-bottom-color:#00c8f0}
-.fg textarea{resize:none;min-height:88px}
-.fg select{cursor:pointer}
-.fg select option{background:#0d1220}
-.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.f-send{
-  width:100%;background:#00c8f0;color:#07090e;border:none;
-  padding:15px;cursor:pointer;
-  font-family:'DM Mono',monospace;font-size:.73rem;letter-spacing:.14em;text-transform:uppercase;
-  transition:background .3s;
-  clip-path:polygon(9px 0%,100% 0%,calc(100% - 9px) 100%,0% 100%);
-  margin-top:8px;
-}
-.f-send:hover{background:#fff}
-
-/* ── FOOTER ── */
-footer{background:#07090e;border-top:1px solid rgba(0,200,240,.1);padding:68px 56px 0}
-.ft{display:grid;grid-template-columns:2.5fr 1fr 1fr 1fr;gap:72px;padding-bottom:56px}
-.fb-name{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:700;letter-spacing:.05em;display:flex;align-items:center;gap:9px;margin-bottom:14px;color:#e8edf8}
-.fb-dot{width:7px;height:7px;background:#00c8f0;border-radius:50%}
-.fb p{font-size:.83rem;color:#556070;line-height:1.8;max-width:270px;margin-bottom:24px}
-.fb-soc{display:flex;gap:8px}
-.fsoc{width:34px;height:34px;background:#0d1220;border:1px solid rgba(0,200,240,.15);display:flex;align-items:center;justify-content:center;font-size:.72rem;color:#556070;text-decoration:none;transition:all .3s}
-.fsoc:hover{border-color:#00c8f0;color:#00c8f0;background:rgba(0,200,240,.07)}
-.fc h4{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:#00c8f0;margin-bottom:22px}
-.fc ul{list-style:none;display:flex;flex-direction:column;gap:11px}
-.fc ul a{font-size:.85rem;color:#556070;text-decoration:none;display:flex;align-items:center;gap:7px;transition:color .3s}
-.fc ul a::before{content:'';width:10px;height:1px;background:rgba(0,200,240,.2);transition:all .3s}
-.fc ul a:hover{color:#e8edf8}
-.fc ul a:hover::before{width:16px;background:#00c8f0}
-.fb-bot{border-top:1px solid rgba(0,200,240,.1);padding:22px 0;display:flex;justify-content:space-between;align-items:center}
-.fb-bot p,.fb-bot a{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:#556070;text-decoration:none}
-.fb-bot a:hover{color:#00c8f0}
-
-/* ── REVEAL ── */
-@keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
-.rv{opacity:0;transform:translateY(24px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
-.rv.in{opacity:1;transform:none}
-.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
-
-/* ── MOBILE ── */
-@media(max-width:1050px){
-  nav{padding:18px 24px}
-  nav.stuck{padding:12px 24px}
-  .nav-links,.nav-cta{display:none}
-  .hero{padding:110px 24px 80px}
-  .h-bottom{grid-template-columns:1fr;gap:24px;margin-top:32px}
-  .h-stats{grid-template-columns:repeat(3,1fr)}
-  .scroll-ind{left:24px}
-  .sec,.sec-alt{padding:80px 24px}
-  .about-grid{grid-template-columns:1fr;gap:52px}
-  .a-frame{max-height:380px}
-  .areas-head,.casos-head{flex-direction:column;align-items:flex-start;gap:14px}
-  .area-row{grid-template-columns:56px 1fr;gap:16px;padding:22px 20px}
-  .ar-desc,.ar-arr{display:none}
-  .casos-grid{grid-template-columns:1fr}
-  .caso-feat{grid-row:auto}
-  .caso-feat img,.caso img{min-height:260px}
-  .colab-grid{grid-template-columns:1fr 1fr;gap:3px}
-  .pillars{grid-template-columns:1fr}
-  .contact-wrap{grid-template-columns:1fr}
-  .c-l,.c-r{padding:72px 24px}
-  .ft{grid-template-columns:1fr 1fr;gap:36px;padding-bottom:40px}
-  footer{padding:52px 24px 0}
-  .fb-bot{flex-direction:column;gap:10px;text-align:center;padding:18px 0}
-}
-@media(max-width:580px){
-  .h-stats{grid-template-columns:1fr 1fr}
-  .colab-grid{grid-template-columns:1fr}
-  .a-cards{grid-template-columns:1fr}
-  .ft{grid-template-columns:1fr}
-  .fg-row{grid-template-columns:1fr}
-  .pillars{grid-template-columns:1fr}
-}
-
-
-  .h-title .t2{-webkit-text-stroke:.7px #00c8f0 !important}
-  .hero{padding:100px 20px 60px !important}
-}
-
-  .h-stats{grid-template-columns:1fr 1fr}
-  .colab-grid{grid-template-columns:1fr}
-  .a-cards{grid-template-columns:1fr}
-  .ft{grid-template-columns:1fr}
-  .fg-row{grid-template-columns:1fr}
-  .pillars{grid-template-columns:1fr}
-  .hero{padding:100px 18px 60px !important}
-  .h-desc{font-size:.88rem}
-}
-
-}
-
-@media(max-width:1050px){
-  nav{padding:18px 24px}
-  nav.stuck{padding:12px 24px}
-  .nav-links,.nav-cta{display:none}
-  .hero{padding:110px 24px 80px}
-  .h-bottom{grid-template-columns:1fr;gap:32px}
-  .h-stats{grid-template-columns:repeat(3,1fr) !important}
-  .scroll-ind{left:24px}
-  .sec,.sec-alt{padding:80px 24px}
-  .about-grid{grid-template-columns:1fr;gap:52px}
-  .a-frame{max-height:380px}
-  .areas-head,.casos-head{flex-direction:column;align-items:flex-start;gap:14px}
-  .area-row{grid-template-columns:56px 1fr;gap:16px;padding:22px 20px}
-  .ar-desc,.ar-arr{display:none}
-  .casos-grid{grid-template-columns:1fr}
-  .caso-feat{grid-row:auto}
-  .caso-feat img,.caso img{min-height:260px}
-  .colab-grid{grid-template-columns:1fr 1fr;gap:3px}
-  .pillars{grid-template-columns:1fr}
-  .contact-wrap{grid-template-columns:1fr}
-  .c-l,.c-r{padding:72px 24px}
-  .ft{grid-template-columns:1fr 1fr;gap:36px;padding-bottom:40px}
-  footer{padding:52px 24px 0}
-  .fb-bot{flex-direction:column;gap:10px;text-align:center;padding:18px 0}
-}
-@media(max-width:600px){
-  .h-title{font-size:clamp(2rem,8.5vw,3rem) !important;line-height:.95 !important;overflow:visible !important}
-  .h-stats{grid-template-columns:repeat(3,1fr) !important}
-  .hs{padding-left:10px}
-  .hs-n{font-size:1.5rem}
-  .colab-grid{grid-template-columns:1fr}
-  .a-cards{grid-template-columns:1fr}
-  .ft{grid-template-columns:1fr}
-  .fg-row{grid-template-columns:1fr}
-  .h-desc{font-size:.88rem}
-  .hero{padding:100px 18px 70px}
-}
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alexis Socías Abogado | Abogado Penalista | Madrid</title>
+<meta name="description" content="Alexis Socías, abogado penalista en Madrid, especializado en casos mediáticos. Confía en mi experiencia para resolver tus problemas legales de manera efectiva y profesional.">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<div id="cur"></div>
-<div id="cur-ring"></div>
-
-<!-- NAV -->
-<nav id="nav">
-  <a class="nav-logo" href="#"><span class="ndot"></span>Alexis Socías</a>
-  <ul class="nav-links">
-    <li><a href="#about">Despacho</a></li>
-    <li><a href="#areas">Áreas</a></li>
-    <li><a href="#casos">Casos</a></li>
-    <li><a href="#colab">Equipo</a></li>
-    <li><a href="#vision">Visión</a></li>
-    <li><a href="#contacto">Contacto</a></li>
-  </ul>
-  <a class="nav-cta" href="#contacto">Consulta urgente</a>
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      <span class="badge"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"><path d="M12 3v15M12 3l-5 3M12 3l5 3M4 9h6M14 9h6M4 9a2.2 2.2 0 003 2 2.2 2.2 0 003-2M14 9a2.2 2.2 0 003 2 2.2 2.2 0 003-2M8 20h8"/></svg></span>
+      Alexis Socías · Abogado Penalista
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="index.html#opiniones">Opiniones</a></li>
+      <li><a href="nuestra-vision.html">Nuestra visión</a></li>
+      <li><a href="casos-destacados.html">Casos destacados</a></li>
+      <li><a href="index.html#contacto">Contacto</a></li>
+      <li><a href="index.html#colaboradores">Colaboradores</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="tel:913441741" class="btn btn-ghost">913 441 741</a>
+      <button class="menu-toggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+    </div>
+  </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero" id="hero">
-  <div class="hero-glow1"></div>
-  <div class="hero-glow2"></div>
-  <div class="h-tag"><span class="h-tag-bar"></span><span style="color:#556070">AS_01</span> Abogado Penalista · Madrid</div>
-  <h1 class="h-title">
-    <span class="t1">Defensa</span>
-    <span class="t2">sin límites.</span>
-    <span class="t3">Sin concesiones.</span>
-  </h1>
-  <div class="h-bottom">
-    <p class="h-desc">Especialista en Derecho Penal con presencia en los casos más relevantes y mediáticos de España. Estrategia procesal avanzada y cobertura nacional mediante una red de colaboradores de élite.</p>
-    <div class="h-right">
-      <div class="h-stats">
-        <div class="hs"><div class="hs-n">+15</div><div class="hs-l">Años</div></div>
-        <div class="hs"><div class="hs-n">500+</div><div class="hs-l">Casos</div></div>
-        <div class="hs"><div class="hs-n">24/7</div><div class="hs-l">Disponible</div></div>
+<header class="hero">
+  <div class="blobs" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+  <div class="wrap">
+    <div>
+      <span class="eyebrow reveal in">Abogado penalista · Madrid</span>
+      <h1 class="reveal in">Alexis Socías<br>Abogado Penalista</h1>
+      <p class="lead reveal in">Despacho de abogado penalista en Madrid, especializado en derecho penal y respaldado por un equipo de destacados especialistas en derecho mercantil, civil, laboral y penitenciario.</p>
+      <div class="hero-cta reveal in">
+        <a href="#contacto" class="btn btn-primary">Solicitar consulta</a>
+        <a href="casos-destacados.html" class="btn btn-ghost">Ver casos destacados</a>
       </div>
-      <div class="h-btns">
-        <a class="btn-a" href="#contacto">Consulta gratuita</a>
-        <a class="btn-b" href="#casos">Ver casos</a>
+      <div class="stat-row reveal in">
+        <div class="stat"><b data-count="20" data-suffix="+">0</b><span>años de experiencia combinada</span></div>
+        <div class="stat"><b data-count="4">0</b><span>áreas de práctica</span></div>
+        <div class="stat"><b>Madrid</b><span>y ámbito nacional</span></div>
+      </div>
+    </div>
+    <div class="hero-photo reveal in">
+      <span class="initials">AS</span>
+      <div class="cap">
+        <div class="role">Abogado penalista</div>
+        <div class="name">Alexis Socías</div>
       </div>
     </div>
   </div>
-  <div class="scroll-ind"><div class="scroll-bar"></div><span>Scroll</span></div>
-</section>
+</header>
 
-<!-- TICKER -->
-<div class="ticker"><div class="ticker-t">
-  <span class="ti">Derecho Penal</span><span class="ti">Casos Mediáticos</span><span class="ti">Juicio con Jurado</span><span class="ti">Derecho Penitenciario</span><span class="ti">Extradición Internacional</span><span class="ti">Recursos de Casación</span><span class="ti">Acusación Particular</span>
-  <span class="ti">Derecho Penal</span><span class="ti">Casos Mediáticos</span><span class="ti">Juicio con Jurado</span><span class="ti">Derecho Penitenciario</span><span class="ti">Extradición Internacional</span><span class="ti">Recursos de Casación</span><span class="ti">Acusación Particular</span>
-</div></div>
-
-<!-- ABOUT -->
-<section class="sec" id="about">
-  <div class="s-tag rv"><span class="s-num">/ 01</span> El Abogado</div>
-  <h2 class="s-h rv d1">Experiencia en los procesos<br><em>más complejos del país</em></h2>
-  <div class="about-grid">
-    <div class="rv d2" style="position:relative">
-      <div class="a-corner"></div>
-      <div class="a-frame">
-        <img src="https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=800&q=85" alt="Alexis Socías">
-        <div class="a-overlay"></div>
-      </div>
-      <div class="a-badge"><div class="a-badge-n">15+</div><div class="a-badge-l">Años</div></div>
-    </div>
-    <div class="a-text">
-      <p class="rv d1"><strong>Alexis Socías</strong> es abogado penalista con sede en Madrid, especializado en procedimientos penales de alta complejidad y repercusión mediática.</p>
-      <p class="rv d2">Actúa tanto en <strong>defensa de acusados</strong> como en representación de víctimas y perjudicados, combinando rigor procesal con visión estratégica en cada caso.</p>
-      <p class="rv d3">Ha intervenido en algunos de los procedimientos penales <strong>más seguidos por los medios</strong> en España, consolidando un perfil único en el panorama jurídico nacional.</p>
-      <div class="a-chips rv d2">
-        <span class="chip">ICAM</span><span class="chip">Sorbonne Partner</span><span class="chip">Nacional</span><span class="chip">24h urgencias</span>
-      </div>
-      <div class="a-cards rv d3">
-        <div class="ac"><div class="ac-t">Colegio ICAM</div><div class="ac-s">Madrid · Activo</div></div>
-        <div class="ac"><div class="ac-t">Univ. Sorbonne</div><div class="ac-s">Acuerdo Paris 1</div></div>
-        <div class="ac"><div class="ac-t">Cobertura nacional</div><div class="ac-s">Red de especialistas</div></div>
-        <div class="ac"><div class="ac-t">Urgencias 24h</div><div class="ac-s">Disponibilidad total</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- AREAS -->
-<section class="sec-alt" id="areas">
-  <div class="areas-head">
-    <div><div class="s-tag rv"><span class="s-num">/ 02</span> Especialidades</div><h2 class="s-h rv d1">Áreas de <em>práctica</em></h2></div>
-    <a class="btn-b rv d2" href="#contacto">Solicitar consulta</a>
-  </div>
-  <div class="area-list">
-    <div class="area-row rv"><div class="ar-n">01</div><div class="ar-name">Derecho Penal General</div><div class="ar-desc">Defensa y acusación en procedimientos penales de alta complejidad</div><div class="ar-arr">→</div></div>
-    <div class="area-row rv d1"><div class="ar-n">02</div><div class="ar-name">Casos Mediáticos</div><div class="ar-desc">Gestión jurídica y comunicativa bajo presión mediática extrema</div><div class="ar-arr">→</div></div>
-    <div class="area-row rv d2"><div class="ar-n">03</div><div class="ar-name">Derecho Penitenciario</div><div class="ar-desc">Permisos, progresiones de grado, libertad condicional y recursos</div><div class="ar-arr">→</div></div>
-    <div class="area-row rv d1"><div class="ar-n">04</div><div class="ar-name">Extradición Internacional</div><div class="ar-desc">Extradición activa y pasiva, órdenes europeas de detención</div><div class="ar-arr">→</div></div>
-    <div class="area-row rv d2"><div class="ar-n">05</div><div class="ar-name">Acusación Particular y Víctimas</div><div class="ar-desc">Representación de víctimas con máxima eficacia procesal</div><div class="ar-arr">→</div></div>
-    <div class="area-row rv d3"><div class="ar-n">06</div><div class="ar-name">Recursos y Casación</div><div class="ar-desc">Impugnación ante Audiencias, TSJ y Tribunal Supremo</div><div class="ar-arr">→</div></div>
-  </div>
-</section>
-
-<!-- CASOS -->
-<section class="sec" id="casos">
-  <div class="casos-head">
-    <div><div class="s-tag rv"><span class="s-num">/ 03</span> Casos Destacados</div><h2 class="s-h rv d1">Presencia en los<br><em>grandes procesos</em></h2></div>
-    <a class="btn-b rv d2" href="#">Ver todos</a>
-  </div>
-  <div class="casos-grid">
-    <div class="caso caso-feat rv">
-      <img src="https://images.unsplash.com/photo-1589994965851-a8f479c573a9?w=900&q=85" alt="">
-      <div class="caso-body">
-        <div class="caso-tag">Defensa · 2026</div>
-        <div class="caso-title">Detención en Aeropuerto de Manises — Extradición Suecia</div>
-        <div class="caso-txt">Puesta en libertad de dos hermanos detenidos buscados en Suecia por estafas bancarias. Coordinación entre el despacho de Madrid y el colaborador valenciano Pedro Zarcero.</div>
-        <a class="caso-lnk" href="https://www.lasprovincias.es/sucesos/detienen-dos-hermanos-aeropuerto-manises-buscados-suecia-20260425004517-nt.html" target="_blank">Leer caso</a>
-      </div>
-    </div>
-    <div class="caso rv d1">
-      <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=700&q=85" alt="">
-      <div class="caso-body">
-        <div class="caso-tag">Acusación Particular · 2025</div>
-        <div class="caso-title">Atropello múltiple en boda de Torrejón de Ardoz</div>
-        <div class="caso-txt">El Jurado Popular declaró culpable al acusado por el atropello que causó cuatro muertos y nueve heridos.</div>
-        <a class="caso-lnk" href="https://confilegal.com/20250604-el-jurado-declara-culpable-a-micael-da-silva-montoya-por-el-atropello-mortal-de-cuatro-personas-en-una-boda-en-torrejon-de-ardoz/" target="_blank">Leer caso</a>
-      </div>
-    </div>
-    <div class="caso rv d2">
-      <img src="https://images.unsplash.com/photo-1453945619913-79ec89a82c51?w=700&q=85" alt="">
-      <div class="caso-body">
-        <div class="caso-tag">Acusación · 2023</div>
-        <div class="caso-title">Caso "Rey del Cachopo" — César Román</div>
-        <div class="caso-txt">Un juez invalidó las acusaciones del imputado contra el abogado de la acusación particular.</div>
-        <a class="caso-lnk" href="https://www.europapress.es/nacional/noticia-juez-invalida-version-rey-cachopo-contra-abogado-acuso-amenazas-muerte-carcel-20230623132029.html" target="_blank">Leer caso</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- COLABORADORES -->
-<section class="sec-alt" id="colab">
-  <div class="s-tag rv"><span class="s-num">/ 04</span> Equipo y Colaboradores</div>
-  <h2 class="s-h rv d1">Una red de <em>especialistas</em> de élite</h2>
-  <div class="colab-grid">
-    <div class="col-card rv d1">
-      <div class="col-init">JA</div>
-      <div class="col-name">José Miguel Alarcón</div>
-      <div class="col-role">Derecho Social y Económico</div>
-      <div class="col-desc">Letrado del ICAM desde 1977. 47 años de trayectoria en derecho social, laboral, fiscal y administrativo económico. Cobertura en todo el territorio nacional.</div>
-      <div class="col-tags"><span class="ctag">D. Laboral</span><span class="ctag">D. Fiscal</span><span class="ctag">Extranjería</span></div>
-    </div>
-    <div class="col-card rv d2">
-      <div class="col-init">OZ</div>
-      <div class="col-name">Oskar Zein</div>
-      <div class="col-role">Abogado Penalista Senior</div>
-      <div class="col-desc">30 años en activo como especialista en derecho penal. Grandes éxitos en asuntos de alta complejidad y resonancia en los medios de comunicación nacionales.</div>
-      <div class="col-tags"><span class="ctag">D. Penal</span><span class="ctag">Mediáticos</span></div>
-    </div>
-    <div class="col-card rv d3">
-      <div class="col-init">PZ</div>
-      <div class="col-name">Pedro Zarcero</div>
-      <div class="col-role">Colaborador · Valencia</div>
-      <div class="col-desc">Colegiado ICAV. Especialista en Derecho Penal y Procesal Penal. Defensa de personas físicas y jurídicas. Colaborador estratégico en la Comunidad Valenciana.</div>
-      <div class="col-tags"><span class="ctag">D. Penal</span><span class="ctag">Valencia</span><span class="ctag">Procesal</span></div>
-    </div>
-    <div class="col-card rv d4">
-      <div class="col-init" style="font-size:.85rem">UPS</div>
-      <div class="col-name">Univ. Paris 1 Sorbonne</div>
-      <div class="col-role">Acuerdo Institucional</div>
-      <div class="col-desc">Acuerdo con la Faculté de Droit de l'Université Paris 1 Panthéon-Sorbonne. Incorporación de especialistas en Master 2 de Derecho europeo e internacional.</div>
-      <div class="col-tags"><span class="ctag">D. Europeo</span><span class="ctag">Internacional</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- VISION -->
-<section class="sec" id="vision" style="position:relative;overflow:hidden">
-  <div class="v-glow"></div>
-  <div class="vision-inner">
-    <div class="s-tag rv" style="justify-content:center"><span class="s-num">/ 05</span> Nuestra Visión</div>
-    <div class="v-divider rv d1"><div class="v-bar"></div><span class="v-label">El despacho</span><div class="v-bar"></div></div>
-    <div class="v-q rv d2">"La justicia no espera.<br><em>Tampoco nosotros.</em><br>Cada caso es <span class="red">una batalla</span> que merece el mejor equipo."</div>
-    <p class="v-sub rv d3">Entendemos el derecho penal como una disciplina de precisión. No existen dos casos iguales: nuestra estrategia se construye para cada situación con la agilidad y profundidad que el cliente merece.</p>
-  </div>
-  <div class="pillars">
-    <div class="pillar rv d1"><span class="p-ico">⚡</span><div class="p-t">Respuesta Inmediata</div><div class="p-d">Disponibilidad 24 horas ante detenciones y urgencias. La asistencia letrada no puede esperar.</div></div>
-    <div class="pillar rv d2"><span class="p-ico">🎯</span><div class="p-t">Estrategia Quirúrgica</div><div class="p-d">Cada decisión procesal se fundamenta en análisis exhaustivo del caso, las pruebas y la jurisprudencia.</div></div>
-    <div class="pillar rv d3"><span class="p-ico">🔒</span><div class="p-t">Confidencialidad Total</div><div class="p-d">La relación abogado-cliente es inviolable. Máxima discreción en cada caso y cada comunicación.</div></div>
-  </div>
-</section>
-
-<!-- CONTACTO -->
-<div class="contact-wrap" id="contacto">
-  <div class="c-l">
-    <div class="c-glow"></div>
-    <div class="s-tag rv"><span class="s-num">/ 06</span> Contacto</div>
-    <h2 class="c-title rv d1">Cuéntenos<br><em>su caso</em></h2>
-    <p class="rv d2" style="font-size:.88rem;color:rgba(232,237,248,.4);line-height:1.9;margin-bottom:36px">Primera consulta gratuita y confidencial. Analizamos su situación y le ofrecemos una valoración honesta de las vías disponibles.</p>
-    <div class="c-items">
-      <div class="c-item rv d2"><div class="c-ico">📍</div><div><div class="c-lbl">Ubicación</div><div class="c-val">Madrid, España</div></div></div>
-      <div class="c-item rv d3"><div class="c-ico">✉</div><div><div class="c-lbl">Email</div><div class="c-val">contacto@alexissocias.com</div></div></div>
-      <div class="c-item rv d3"><div class="c-ico">◎</div><div><div class="c-lbl">Urgencias 24h</div><div class="c-val">Asistencia letrada inmediata</div></div></div>
-    </div>
-    <div class="urg rv d4"><div class="urg-dot"></div>¿Detención en curso? Contacte ahora mismo — asistencia letrada inmediata disponible</div>
-  </div>
-  <div class="c-r">
-    <div class="s-tag rv"><span class="s-num">//</span> Formulario</div>
-    <div class="fg-row rv d1">
-      <div class="fg"><label>Nombre</label><input type="text" placeholder="Su nombre"></div>
-      <div class="fg"><label>Teléfono</label><input type="tel" placeholder="+34 600 000 000"></div>
-    </div>
-    <div class="fg rv d1"><label>Email</label><input type="email" placeholder="correo@ejemplo.com"></div>
-    <div class="fg rv d2">
-      <label>Tipo de consulta</label>
-      <select>
-        <option value="">Seleccionar área...</option>
-        <option>Derecho Penal · Defensa</option>
-        <option>Acusación particular</option>
-        <option>Caso mediático</option>
-        <option>Derecho Penitenciario</option>
-        <option>Extradición</option>
-        <option>Recurso / Casación</option>
-        <option>🚨 Urgencia · Detención</option>
-      </select>
-    </div>
-    <div class="fg rv d2"><label>Descripción del caso</label><textarea placeholder="Explique brevemente su situación..."></textarea></div>
-    <button class="f-send rv d3">→ Enviar consulta confidencial</button>
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Derecho Penal</span><span>Derecho Mercantil</span><span>Derecho Civil</span><span>Derecho Laboral</span><span>Derecho Penitenciario</span><span>Casos Mediáticos</span>
+    <span>Derecho Penal</span><span>Derecho Mercantil</span><span>Derecho Civil</span><span>Derecho Laboral</span><span>Derecho Penitenciario</span><span>Casos Mediáticos</span>
   </div>
 </div>
 
-<!-- FOOTER -->
-<footer>
-  <div class="ft">
-    <div class="fb">
-      <div class="fb-name"><span class="fb-dot"></span>Alexis Socías</div>
-      <p>Despacho de abogado penalista en Madrid. Especialista en Derecho Penal con cobertura nacional y presencia en los grandes procesos judiciales.</p>
-      <div class="fb-soc">
-        <a class="fsoc" href="#">in</a><a class="fsoc" href="#">tw</a><a class="fsoc" href="#">yt</a>
+<section id="novedades">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Novedades</span>
+      <h2>Casos que marcan la actualidad</h2>
+      <p>Una selección de asuntos recientes en los que hemos intervenido o que resultan relevantes para nuestra práctica.</p>
+    </div>
+    <div class="grid reveal-stagger">
+      <article class="card">
+        <div class="card-media" style="--tint-a:#0a3d62;--tint-b:#134e78;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l3 7h7l-5.5 4.2L18 21l-6-4.3L6 21l1.5-7.8L2 9h7z"/></svg>
+        </div>
+        <div class="card-body">
+          <h3>Detienen a dos hermanos en el aeropuerto de Manises buscados en Suecia por estafas a bancos</h3>
+          <p>Actuación coordinada entre nuestro despacho y nuestro colaborador en la Comunidad Valenciana, Pedro Zarcero, que logró la puesta en libertad de los investigados tras su puesta a disposición judicial.</p>
+          <a class="card-link" href="https://www.lasprovincias.es/sucesos/detienen-dos-hermanos-aeropuerto-manises-buscados-suecia-20260425004517-nt.html" target="_blank" rel="noopener">Ir a la noticia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-media" style="--tint-a:#4a3728;--tint-b:#b08d57;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v20M2 12h20"/></svg>
+        </div>
+        <div class="card-body">
+          <h3>Jurado Popular declara culpable a Micael da Silva Montoya por el atropello mortal en Torrejón de Ardoz</h3>
+          <p>Actuó de forma voluntaria, acelerando sin frenar e impactando contra varios invitados de una boda. Representamos a una de las víctimas, con lesiones aún en valoración.</p>
+          <a class="card-link" href="https://confilegal.com/20250604-el-jurado-declara-culpable-a-micael-da-silva-montoya-por-el-atropello-mortal-de-cuatro-personas-en-una-boda-en-torrejon-de-ardoz/" target="_blank" rel="noopener">Ir a la noticia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-media" style="--tint-a:#0a3d62;--tint-b:#b08d57;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/></svg>
+        </div>
+        <div class="card-body">
+          <h3>Un juez invalida la versión del 'Rey del Cachopo' contra un abogado al que acusó de amenazas de muerte en la cárcel</h3>
+          <p>El juzgado de Colmenar Viejo desestimó las acusaciones y descartó cualquier vínculo con una presunta mafia policial relacionada con el caso.</p>
+          <a class="card-link" href="https://www.europapress.es/nacional/noticia-juez-invalida-version-rey-cachopo-contra-abogado-acuso-amenazas-muerte-carcel-20230623132029.html" target="_blank" rel="noopener">Ir a la noticia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+    </div>
+    <div class="center reveal mt-64">
+      <a href="casos-destacados.html" class="btn btn-ghost">Ver todos los casos destacados</a>
+    </div>
+  </div>
+</section>
+
+<section id="colaboradores" class="section-soft">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Equipo</span>
+      <h2>Colaboradores</h2>
+      <p>Un equipo de especialistas de confianza que refuerza cada defensa con visión multidisciplinar.</p>
+    </div>
+    <div class="people reveal-stagger">
+      <div class="person">
+        <div class="avatar">JA</div>
+        <h3>José Miguel Alarcón</h3>
+        <p>Letrado en ejercicio del ICAM desde 1977. 47 años de trayectoria en derecho social (inclusión, extranjería, laboral, familia) y derecho económico, fiscal y administrativo sancionador. Presta servicios en todo el territorio nacional.</p>
+      </div>
+      <div class="person">
+        <div class="avatar">OZ</div>
+        <h3>Oskar Zein</h3>
+        <p>Prestigioso abogado penalista con 30 años de experiencia activa, especialista en derecho penal, con grandes éxitos en asuntos de gran complejidad y resonancia mediática.</p>
+      </div>
+      <div class="person">
+        <div class="avatar">PZ</div>
+        <h3>Pedro Zarcero</h3>
+        <p>Abogado colegiado en el Ilustre Colegio de Abogados de Valencia, especializado en Derecho Penal y Procesal Penal. Nuestro colaborador en la Comunidad Valenciana.</p>
       </div>
     </div>
-    <div class="fc"><h4>Especialidades</h4><ul><li><a href="#">Derecho Penal</a></li><li><a href="#">Casos mediáticos</a></li><li><a href="#">Penitenciario</a></li><li><a href="#">Extradición</a></li><li><a href="#">Recursos</a></li></ul></div>
-    <div class="fc"><h4>Despacho</h4><ul><li><a href="#">Nuestra visión</a></li><li><a href="#">Casos destacados</a></li><li><a href="#">Colaboradores</a></li><li><a href="#">Novedades</a></li></ul></div>
-    <div class="fc"><h4>Legal</h4><ul><li><a href="#">Aviso legal</a></li><li><a href="#">Privacidad</a></li><li><a href="#">Cookies</a></li></ul></div>
   </div>
-  <div class="fb-bot">
-    <p>© 2026 Alexis Socías Abogado · Todos los derechos reservados</p>
-    <a href="#">alexissocias.com</a>
+</section>
+
+<section id="opiniones">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Opiniones</span>
+      <h2>Lo que dicen nuestros clientes</h2>
+    </div>
+    <div class="quotes reveal-stagger">
+      <div class="quote"><p>"Más que un abogado se ha convertido en nuestro socio legal."</p></div>
+      <div class="quote"><p>"Un profesional en el que puedes confiar y dejar todo en sus manos, sabes que siempre está trabajando para obtener los mejores resultados."</p></div>
+      <div class="quote"><p>"Con él se entiende perfectamente lo que está pasando, ya que el mundo legal es complicado."</p></div>
+      <div class="quote"><p>"Se adelanta a tus necesidades, sabe perfectamente lo que ocurrirá y antes de que pase ya pone remedio."</p></div>
+      <div class="quote"><p>"Lo mejor, la cercanía."</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" class="section-dark">
+  <div class="wrap">
+    <div class="section-head reveal" style="margin-bottom:50px;">
+      <span class="eyebrow">Contacto</span>
+      <h2>Hablemos de tu caso</h2>
+      <p>Para preguntas generales, completa el formulario o contáctanos directamente.</p>
+    </div>
+    <div class="contact-wrap">
+      <div class="reveal">
+        <ul class="contact-info">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-6.5 7-11.5A7 7 0 105 9.5C5 14.5 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+            <span>Calle de Agustín de Foxá 25, 28036 Madrid</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.12.9.3 1.79.54 2.65a2 2 0 01-.45 2.11L8.09 9.59a16 16 0 006.32 6.32l1.11-1.11a2 2 0 012.11-.45c.86.24 1.75.42 2.65.54A2 2 0 0122 16.92z"/></svg>
+            <span><a href="tel:913441741">913 441 741</a></span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v16H4z"/><path d="M4 4l8 8 8-8"/></svg>
+            <span><a href="mailto:info@lausnet.com">info@lausnet.com</a></span>
+          </li>
+        </ul>
+        <a class="btn btn-light mt-64" href="https://www.google.com/maps/search/?api=1&query=Calle+de+Agust%C3%ADn+de+Fox%C3%A1+25%2C+28036+Madrid" target="_blank" rel="noopener">Cómo llegar</a>
+      </div>
+
+      <form class="form reveal" id="contact-form" action="https://formspree.io/f/TU_ID_DE_FORMSPREE" method="POST">
+        <div class="field">
+          <label for="name">Nombre</label>
+          <input id="name" name="name" type="text" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required>
+        </div>
+        <div class="field">
+          <label for="message">Mensaje</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Enviar</button>
+        <small>Formulario gestionado con Formspree (gratis hasta 50 envíos/mes). Configúralo siguiendo el paso 4 de la guía.</small>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="year"></span> Alexis Socías Abogado. Todos los derechos reservados.</span>
+    <span><a href="mailto:info@lausnet.com">info@lausnet.com</a> · <a href="tel:913441741">913 441 741</a></span>
   </div>
 </footer>
 
-<script>
-// CURSOR (solo desktop)
-if(window.matchMedia('(pointer:fine)').matches){
-  const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
-  let mx=0,my=0,rx=0,ry=0;
-  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
-  (function a(){
-    cur.style.left=mx+'px';cur.style.top=my+'px';
-    rx+=(mx-rx)*.1;ry+=(my-ry)*.1;
-    ring.style.left=rx+'px';ring.style.top=ry+'px';
-    requestAnimationFrame(a);
-  })();
-  document.querySelectorAll('a,button,.area-row,.caso,.col-card,.pillar,.ac').forEach(el=>{
-    el.addEventListener('mouseenter',()=>{cur.classList.add('big');ring.classList.add('big')});
-    el.addEventListener('mouseleave',()=>{cur.classList.remove('big');ring.classList.remove('big')});
-  });
-}
-// NAV
-window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('stuck',scrollY>60));
-// REVEAL
-const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}})},{threshold:0.08});
-document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
-</script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="script.js"></script>
 </body>
 </html>
