@@ -107,6 +107,72 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // --- Halo y paralaje en el hero, según la posición del ratón ---
+  const heroEl = document.querySelector('.hero');
+  const blobsEl = document.querySelector('.blobs');
+  if (heroEl && !reducedMotion) {
+    heroEl.addEventListener('mousemove', (e) => {
+      const r = heroEl.getBoundingClientRect();
+      const px = ((e.clientX - r.left) / r.width) * 100;
+      const py = ((e.clientY - r.top) / r.height) * 100;
+      heroEl.style.setProperty('--hx', px + '%');
+      heroEl.style.setProperty('--hy', py + '%');
+      if (blobsEl) {
+        const dx = (e.clientX - r.left - r.width / 2) / r.width;
+        const dy = (e.clientY - r.top - r.height / 2) / r.height;
+        blobsEl.style.transform = `translate(${dx * 24}px, ${dy * 24}px)`;
+      }
+    });
+    heroEl.addEventListener('mouseleave', () => {
+      heroEl.style.removeProperty('--hx');
+      heroEl.style.removeProperty('--hy');
+      if (blobsEl) blobsEl.style.transform = '';
+    });
+  }
+
+  // --- Cursor personalizado: punto ágil + anillo con estela ---
+  const canCustomCursor = !reducedMotion && window.matchMedia('(pointer: fine)').matches;
+  if (canCustomCursor) {
+    const cursorDot = document.createElement('div');
+    cursorDot.className = 'cursor-dot hidden';
+    const cursorRing = document.createElement('div');
+    cursorRing.className = 'cursor-ring hidden';
+    document.body.append(cursorDot, cursorRing);
+
+    let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+    let ringX = mouseX, ringY = mouseY;
+    let hovering = false;
+
+    const setDotPos = () => {
+      const scale = hovering ? 1.6 : 1;
+      cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%,-50%) scale(${scale})`;
+    };
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursorDot.classList.remove('hidden');
+      cursorRing.classList.remove('hidden');
+      setDotPos();
+    });
+    document.addEventListener('mouseleave', () => {
+      cursorDot.classList.add('hidden');
+      cursorRing.classList.add('hidden');
+    });
+
+    (function animateRing() {
+      ringX += (mouseX - ringX) * 0.18;
+      ringY += (mouseY - ringY) * 0.18;
+      cursorRing.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%,-50%)`;
+      requestAnimationFrame(animateRing);
+    })();
+
+    document.querySelectorAll('a, button, .btn, .card, .person, .quote, .pillar, input, textarea').forEach(el => {
+      el.addEventListener('mouseenter', () => { hovering = true; cursorRing.classList.add('hover'); setDotPos(); });
+      el.addEventListener('mouseleave', () => { hovering = false; cursorRing.classList.remove('hover'); setDotPos(); });
+    });
+  }
+
   // --- Botón flotante "volver arriba" ---
   const backToTop = document.createElement('button');
   backToTop.className = 'back-to-top';
