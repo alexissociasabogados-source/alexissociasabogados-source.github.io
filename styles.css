@@ -23,6 +23,8 @@ html{scroll-behavior:smooth;}
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Inter","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-feature-settings:"ss01" 1;
+  letter-spacing:-.011em;
   color:var(--text);
   background:var(--bg);
   -webkit-font-smoothing:antialiased;
@@ -137,10 +139,12 @@ p{color:var(--text-soft);font-size:18px;margin:0 0 16px;}
   position:absolute;top:-10px;right:-10px;line-height:1;
 }
 .hero-photo .cap{
-  position:relative;z-index:2;padding:28px;color:#fff;
+  position:relative;z-index:2;padding:28px;color:#fff;width:100%;
+  background:linear-gradient(to top, rgba(6,14,22,.92) 0%, rgba(6,14,22,.75) 45%, rgba(6,14,22,0) 100%);
+  padding-top:80px;
 }
-.hero-photo .cap .role{font-size:13px;letter-spacing:.08em;text-transform:uppercase;opacity:.75;}
-.hero-photo .cap .name{font-size:26px;font-weight:700;margin-top:4px;}
+.hero-photo .cap .role{font-size:13px;letter-spacing:.08em;text-transform:uppercase;opacity:.8;text-shadow:0 1px 8px rgba(0,0,0,.4);}
+.hero-photo .cap .name{font-size:26px;font-weight:700;margin-top:4px;text-shadow:0 1px 8px rgba(0,0,0,.4);}
 .hero-cta{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap;}
 .stat-row{display:flex;gap:36px;margin-top:44px;flex-wrap:wrap;}
 .stat b{display:block;font-size:30px;font-weight:700;}
