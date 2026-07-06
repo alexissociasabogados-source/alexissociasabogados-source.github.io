@@ -194,8 +194,9 @@ p{color:var(--text-soft);font-size:18px;margin:0 0 16px;}
 .card-link:hover svg{transform:translateX(3px);}
 
 /* ---------- Colaboradores ---------- */
-.people{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
-@media(max-width:860px){.people{grid-template-columns:1fr;}}
+.people{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;}
+@media(max-width:1080px){.people{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.people{grid-template-columns:1fr;}}
 .person{
   background:#fff;border:1px solid var(--line);border-radius:var(--radius);
   padding:32px;text-align:center;
